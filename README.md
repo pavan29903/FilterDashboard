@@ -65,6 +65,10 @@ npm test
 
 ---
 
+## 📸 Screenshot
+
+![Dashboard Preview](./Screenshot1.png)
+![Dashboard Preview](./Screenshot2.png)
 
 
 ## Live 
