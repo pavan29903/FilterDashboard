@@ -34,7 +34,7 @@ A high-performance React + TypeScript dashboard that dynamically filters large d
 Clone the project:
 
 ```bash
-git clone https://github.com/your-username/smart-filter-dashboard.git
+git clone https://github.com/pavan29903/FilterDashboard.git
 cd smart-filter-dashboard
 ```
 
@@ -64,3 +64,8 @@ npm test
 - dataset_large.csv — used to test performance and filtering logic
 
 ---
+
+
+
+## Live 
+- https://track-it-auyb.vercel.app/
