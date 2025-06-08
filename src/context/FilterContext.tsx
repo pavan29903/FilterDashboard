@@ -14,6 +14,10 @@ interface FilterContextType{
   setFilterSelections: React.Dispatch<React.SetStateAction<Record<string, OptionType[]>>>;
   handleFilterChange: (col: string, selected: OptionType[]) => void;
   columns: string[];
+  getFilterOptions: () => Record<string, OptionType[]>;
+  resetFilters: () => void;
+
+
 };
 
 const FilterContext = createContext<FilterContextType | undefined>(undefined);
@@ -33,7 +37,7 @@ export const FilterProvider = ({ children }: { children: React.ReactNode }) => {
   const [columns, setColumns] = useState<string[]>([]);
 
 useEffect(() => {
-  fetch('/dataset_small.csv')
+  fetch('/dataset_large.csv')
     .then((res) => res.text())
     .then((csvText) => {
       Papa.parse<DataRow>(csvText, {
@@ -65,6 +69,26 @@ useEffect(() => {
 
     setFilteredData(filtered);
   };
+
+
+  const getFilterOptions = (): Record<string, OptionType[]> => {
+  const options: Record<string, OptionType[]> = {};
+
+  columns.forEach((col) => {
+    const uniqueValues = Array.from(
+      new Set(filteredData.map((row) => row[col]))
+    ).sort();
+    options[col] = uniqueValues.map((val) => ({ label: val, value: val }));
+  });
+
+  return options;
+};
+
+const resetFilters = () => {
+  setFilterSelections({});
+  setFilteredData(originalData);
+};
+
   
 
   return (
@@ -76,6 +100,8 @@ useEffect(() => {
         setFilterSelections,
         handleFilterChange,
         columns,
+        getFilterOptions,
+        resetFilters
       }}
     >
       {children}
