@@ -67,9 +67,9 @@ npm test
 
 ## 📸 Screenshot
 
-![Dashboard Preview](./Screenshot1.png)
-![Dashboard Preview](./Screenshot2.png)
+![Dashboard Preview](./public/Screenshot1.png)
+![Dashboard Preview](./public/Screenshot2.png)
 
 
 ## Live 
-- https://track-it-auyb.vercel.app/
+- https://filter-dashboard-eight.vercel.app/
